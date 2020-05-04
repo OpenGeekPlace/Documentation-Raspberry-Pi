@@ -224,11 +224,7 @@ PING imprimante (192.168.0.20) 56(84) bytes of data.
 
 ## Développement à distance
 
-* Pour plus de confort vous pouvez éditer vos fichiers, hébergés sur votre Pi, depuis Visual Studio Code sur votre PC ou Mac
-    * Cela requiert que votre Pi support le jeu d'instruction armv7. Donc malheureusement cela exclu les Pi zero.
-    * Les Pi compatibles sont Pi 2, Pi 3 et Pi 4.
-    * Installer Visual Studio Code sur votre PC ou Mac
-        * A noter que Visual Studio Code est aussi disponible pour les PC sous Linux 64 bits
-    * Installer l'extension Remote - SSH
-    * En bas à gauche vous verez alors une petite icone permettant d'ouvrir une fenêtre distante.
-    * Plus de détails sur <https://www.digitalocean.com/community/tutorials/how-to-use-visual-studio-code-for-remote-development-via-the-remote-ssh-plugin-fr>
+<./développement_à_distance.md>
+
+# Sites d'informations
+* <https://github.com/thibmaek/awesome-raspberry-pi>
