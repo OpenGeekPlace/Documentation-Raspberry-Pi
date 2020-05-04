@@ -59,9 +59,8 @@ network={
 	ssid="Padraig"
 	psk="Le mot de passe"
 }
-* Vous pouvez renseigner plusieurs réseaux Wifi. Ceci permet par exemple de connecter votre Pi à votre mobile en mode access point.
-
 ```
+* Vous pouvez renseigner plusieurs réseaux Wifi. Ceci permet par exemple de connecter votre Pi à votre mobile en mode access point.
 
 ## Recherche de la Pi sur le réseau
 * L'application Fing, sur Android et Ios est très pratique
@@ -122,12 +121,13 @@ L'écart est encore plus grand avec un SSD.
     Le log est flushé vers la carte uSD une fois par jour.  
     Cela réduit fortement le nombre d'écritures en flash
     * <https://github.com/azlux/log2ram>
-    * ```
+    * 
+```
 echo "deb http://packages.azlux.fr/debian/ buster main" | sudo tee /etc/apt/sources.list.d/azlux.list
 wget -qO - https://azlux.fr/repo.gpg.key | sudo apt-key add -
 apt update
 apt install log2ram
-     ```
+```
 
 ## Nommage
 
@@ -175,7 +175,6 @@ ff02::2		ip6-allrouters
 > ping imprimante
 PING imprimante (192.168.0.20) 56(84) bytes of data.
 64 bytes from imprimante (192.168.0.20): icmp_seq=1 ttl=64 time=2.31 ms
-
 ```
 
 ## Esthétique
@@ -221,6 +220,15 @@ PING imprimante (192.168.0.20) 56(84) bytes of data.
     
     sudo apt install cups
 
-* Connexion pour ma Canon IP400R : lpd://imprimante/queue
-* 
+* Connexion pour ma Canon IP4000R : lpd://imprimante/queue
 
+## Développement à distance
+
+* Pour plus de confort vous pouvez éditer vos fichiers, hébergés sur votre Pi, depuis Visual Studio Code sur votre PC ou Mac
+    * Cela requiert que votre Pi support le jeu d'instruction armv7. Donc malheureusement cela exclu les Pi zero.
+    * Les Pi compatibles sont Pi 2, Pi 3 et Pi 4.
+    * Installer Visual Studio Code sur votre PC ou Mac
+        * A noter que Visual Studio Code est aussi disponible pour les PC sous Linux 64 bits
+    * Installer l'extension Remote - SSH
+    * En bas à gauche vous verez alors une petite icone permettant d'ouvrir une fenêtre distante.
+    * Plus de détails sur <https://www.digitalocean.com/community/tutorials/how-to-use-visual-studio-code-for-remote-development-via-the-remote-ssh-plugin-fr>
