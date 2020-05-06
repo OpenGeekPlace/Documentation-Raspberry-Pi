@@ -89,11 +89,24 @@ host pi
 
 ### Visual Studio Code
 
-* Pour plus de confort vous pouvez éditer vos fichiers, hébergés sur votre Pi, depuis Visual Studio Code sur votre PC ou Mac
+* Attention à ne pas confondre Visual Studio et Visual Studio Code.  
+  Malgré la proximité de nommage, ces deux environnements de développement de Microsoft sont complétement indépendants et leur philosophie est aussi radicalement différente.
+* Pour plus de simplicité, je vais nommer Visual Studio Code VSC dans le reste de cet article.
+* VSC est gratuit et disponible sur PC Windows, PC Linux et Mac  
+  Les dernières versions ne sont disponibles qu'en 64 bits
+* Installer VSC sur votre PC ou Mac
+  * Il est aussi disponible, dans une ancienne version 32 bits, pour les Pi 2, 3 et 4.  
+  Mais il faut bidouiller un peu pour l'installer et le bon fonctionnement n'est pas garanti à terme.
+* Pour plus de confort vous pouvez éditer vos fichiers, hébergés sur votre Pi, depuis VSC sur votre PC ou Mac
   * Cela requiert que votre Pi support le jeu d'instruction armv7. Donc malheureusement cela exclu les Pi zero.
   * Les Pi compatibles sont Pi 2, Pi 3 et Pi 4.
-  * Installer Visual Studio Code sur votre PC ou Mac
-    * A noter que Visual Studio Code est aussi disponible pour les PC sous Linux 64 bits
   * Installer l'extension Remote - SSH
   * En bas à gauche vous verez alors une petite icone permettant d'ouvrir une fenêtre distante.
   * Plus de détails sur <https://www.digitalocean.com/community/tutorials/how-to-use-visual-studio-code-for-remote-development-via-the-remote-ssh-plugin-fr>
+  * Vous avez donc la possibilité de faire du debug pas à pas en Python de votre code s'exécutant sur la Pi, depuis votre PC.
+  * Si vous utilisez une Pi Zero, tout n'est pas perdu.
+    * Vous pouvez installer l'extension SFTP dans VSC
+    * Cette extension vous permet d'éditer vos fichiers sur la Pi depuis VSC sur votre PC.
+    * La synchronisation des fichiers entre la Pi et votre PC est alors automatique.
+* Dans le terminal mis à disposition dans VSC, vous pouvez vous connecter à la Pi via SSH.  
+  Cela vous permet donc de lancer l'éxécution de votre code directement depuis VSC
