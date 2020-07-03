@@ -74,7 +74,7 @@ password=rasp_pass
 CTRL+X pour sauvegarder.
 Puis modifier les droits du fichier  
 ```bash
-chmod 700 /root/.smbNasMinihome
+chmod 700 /root/.smbNas
 ```
 Quitte le mode root
 ```bash
