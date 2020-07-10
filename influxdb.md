@@ -214,7 +214,12 @@ json_body = [
         }
     ]
 ```
- 
+##### Lecture  
+```python
+query = 'SELECT * FROM capteurs_aqara;'
+d = client.query(query)
+```
+
 ##### Exemples plus complets
 * https://influxdb-python.readthedocs.io/en/latest/examples.html
 
