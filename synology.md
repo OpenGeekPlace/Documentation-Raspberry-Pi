@@ -6,6 +6,11 @@ Cette page décrit comment partager un dossier d'un **NAS Synology** sur Raspber
 - De base, la Raspberry PI tourne sur carte SD, les multiples écritures peuvent la rendre inutilisable avec perte des données. Le NAS peut être utilisé pour des sauvegardes régulières des données.  
 - L'utilisation d'une base de données sur une longue période peut conduire à de gros volumes de données. Le NAS peut servir de purge ou de lieu de résidence de la BD.  
 
+## Equipement utilisé pour les tests
+- Raspberry PI 3 B+
+- Raspbian Buster
+- NAS Synology DS216 Play (DSM 6.2)
+
 ## Configuration du NAS Synology
 ##### Création du dossier partagé
 Dans le **Panneau de configuration**, menu **Dossier partagé**, créer un nouveau dossier avec:
