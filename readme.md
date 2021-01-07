@@ -12,7 +12,7 @@ Il y a d'énormes différences entre cartes sur les débits en écriture de peti
   * Priviligier un vendeur fiable
 * Le microcontroleur intégré à la carte SD assure du wear levelling.
   * <https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=142626&sid=25db7f2a94d635965829922b5043772a>
-  * Pour augmenter l'efficatité du wear levelling, vous pouvez utiliser une carte d'une capacité supérieure à vos besoins. Une carte  de 32 Go devrait largement excéder les besoins d'une installation desktop. Et une carte de 16 Go devrait excéder les besoins de Raspbian Lite.
+  * Pour augmenter l'efficacité du wear levelling, vous pouvez utiliser une carte d'une capacité supérieure à vos besoins. Une carte  de 32 Go devrait largement excéder les besoins d'une installation desktop. Et une carte de 16 Go devrait excéder les besoins de Raspberry Pi OS Lite.
   * L'écart de prix entre les cartes 16 Go et 32 Go étant faible, la capacité 32 Go est recommandée.
 * Modèles recommandables :
   * Sandisk Ultra A1 32 Go
@@ -28,8 +28,9 @@ Il y a d'énormes différences entre cartes sur les débits en écriture de peti
 
 ## Flasher la carte SD
 
-* Vous pouvez utiliser, entre autres, raspberry pi imager : <https://www.raspberrypi.org/downloads/>
-* Choisissez Raspbian si vous avez besoin d'une interface graphique, Raspbian Lite sinon.
+* Vous pouvez utiliser, entre autres, Raspberry Pi Imager : <https://www.raspberrypi.org/downloads/>
+* Choisissez "Raspberry Pi OS with desktop" si vous avez besoin d'une interface graphique, "Raspberry Pi OS Lite" sinon.  
+A noter que vous trouverez souvent des références à Raspbian, qui est l'ancien nom de Raspberry Pi OS.
 
 ## Activation du ssh
 
@@ -52,8 +53,12 @@ Le contenu n'a pas d'importance.
 ### Via wpa_supplicant.conf
 
 * Si votre Pi est en "headless" et connectée uniquement en wifi, alors il vous faut renseigner les identifiants wifi depuis le PC Linux , ou bien depuis une autre Pi, où l'on flash la carte uSD
-* Editer le fichier /etc/wpa_supplicant/wpa_supplicant.conf
-  * Ce fichier est dans la partition rootfs qui n'est pas visible depuis un PC Windows
+* Editer le fichier wpa_supplicant.conf
+  * Vous pouvez placer ce fichier a 2 endroits distincts :
+    * A la racine de la partition `boot`, qui est accessible depuis Windows
+    * Dans le répertoire `/etc/wpa_supplicant` de la partition rootfs qui n'est pas visible depuis un PC Windows
+    * Evitez de le placer dans ces 2 emplacements à la fois.
+    Cela serait une source de confusion.
 * Ajoutez y l'identifiant et le mot de passe de votre réseau Wifi.
 * Exemple :
 
@@ -75,9 +80,9 @@ Le contenu n'a pas d'importance.
 
 * Vous pouvez renseigner plusieurs réseaux Wifi. Ceci permet par exemple de connecter votre Pi à votre mobile en mode access point.
 
-### Via la création d'une image Raspbian sur mesure
+### Via la création d'une image Raspberry Pi OS sur mesure
 
-* Vous pouvez parametrer l'OS Raspbian avant de le flasher sur la carte SD
+* Vous pouvez parametrer Raspberry Pi OS avant de le flasher sur la carte SD
 * <https://github.com/RPi-Distro/pi-gen>
   * Je ne l'ai pas encore testé personnellement
   * Permet de configurer le Wifi, nom d'utilisateur, mot de passe, langue, clavier, fuseau horaire, autorisation SSH.
@@ -101,7 +106,7 @@ Surtout si vous activez l'accès SSH.
 * Dans raspi-config (Advanced/Expand Filesystem)
 * Si vous avez flashé votre carte SD avec raspberry pi imager, cette étape ne devrait pas être nécessaire
 
-## Mise à jour de Raspbian
+## Mise à jour de Raspbirry Pi OS
 
 * sudo apt update
 * sudo apt upgrade
@@ -183,7 +188,7 @@ L'écart est encore plus grand avec un SSD.
 * Vous devez changer le hostname dans 2 fichiers :
   * /etc/hostname
   * /etc/hosts (remplacer le nom associé à 127.0.1.1 par votre hostname)
-* Ou bien va raspi-config
+* Ou bien via raspi-config
 
 ### Nommer les autres machines
 
