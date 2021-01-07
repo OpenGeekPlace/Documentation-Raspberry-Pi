@@ -1,6 +1,6 @@
 # Développement à distance
 
-## Pour quoi donc ?
+## Pour quoi donc?
 
 ### Pour vous passer du tryptique clavier/souris/écran
 
@@ -110,3 +110,15 @@ host pi
     * La synchronisation des fichiers entre la Pi et votre PC est alors automatique.
 * Dans le terminal mis à disposition dans VSC, vous pouvez vous connecter à la Pi via SSH.  
   Cela vous permet donc de lancer l'éxécution de votre code directement depuis VSC
+
+### VNC
+
+* Vous pouvez accèder à votre Pi via un bureau distant
+  * Sur la Pi
+    * Requiert d'avoir une installation complète de Raspberry OS, Raspberry OS Lite ne suffit pas.
+    * VNC Server est installé par défaut dans Raspberry OS
+    * <https://www.framboise314.fr/connectez-vous-de-nimporte-ou-a-votre-raspberry-pi-avec-vnc-connect/>
+    * Autorisez le serveur VNC :
+      * Dans raspi-config, "Interfacing options"
+  * Installez VNC Viewer sur votre PC, Mac ou tablette
+    * <https://www.realvnc.com/fr/connect/download/viewer/>
