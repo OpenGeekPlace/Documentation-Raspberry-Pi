@@ -106,7 +106,7 @@ Surtout si vous activez l'accès SSH.
 * Dans raspi-config (Advanced/Expand Filesystem)
 * Si vous avez flashé votre carte SD avec raspberry pi imager, cette étape ne devrait pas être nécessaire
 
-## Mise à jour de Raspbirry Pi OS
+## Mise à jour de Raspberry Pi OS
 
 * sudo apt update
 * sudo apt upgrade
