@@ -30,7 +30,15 @@ Il y a d'énormes différences entre cartes sur les débits en écriture de peti
 
 * Vous pouvez utiliser, entre autres, Raspberry Pi Imager : <https://www.raspberrypi.org/downloads/>
 * Choisissez "Raspberry Pi OS with desktop" si vous avez besoin d'une interface graphique, "Raspberry Pi OS Lite" sinon.  
-A noter que vous trouverez souvent des références à Raspbian, qui est l'ancien nom de Raspberry Pi OS.
+À noter que vous trouverez souvent des références à Raspbian, qui est l'ancien nom de Raspberry Pi OS.
+* Depuis la V1.6 (mars 2021) Raspberry Pi Imager dispose d'une séquence cachée (Crtl Shift x), qui donne accès à des options avancées
+  * Nom d'host
+  * Mot de passe de l'utilisateur pi
+  * Réglage du Wifi (SSID, mot de passe, localisation)
+  * Autorisation du ssh
+  * Tout ceci évite pas mal de manipulations décrites ci-dessous
+  * Malheureusement, à l'usage, sous Windows 10 avec la V1.6, j'ai eu beaucoup d'échecs d'écriture de ces réglages sur la uSD ou le disque USB
+  * Espérons que ces soucis seront résolus dans une version ultérieure
 
 ## Activation du ssh
 
@@ -108,15 +116,34 @@ Surtout si vous activez l'accès SSH.
 
 ## Mise à jour de Raspberry Pi OS
 
-* sudo apt update
-* sudo apt upgrade
+ ```(shell)
+ sudo apt update
+ sudo apt upgrade
+ ```
 
 ## Mise à jour du firmware
 
 * Particulièrement important pour la Pi4 : <https://jamesachambers.com/raspberry-pi-4-bootloader-firmware-updating-recovery-guide/>
 * Pour la Pi 4, un firmware est disponible, depuis le 3 septembre 2020, qui permet de booter directement sur un disque USB sans même qu'une carte uSD soit présente.
 * <https://www.raspberrypi.org/documentation/hardware/raspberrypi/booteeprom.md>
-
+* La commande apt full-upgrade est documentée comme mettant à jour le bootloader en plus des autres logiciels.
+  J'ai un doute sur la fait qu'elle mette à jour le firmware.
+  Je recommande donc de l'utiliser en plus de rpi-eeprom-upgrade.
+  ```(shell)
+  sudo apt update
+  sudo apt full-upgrade
+  sudo reboot
+  ```
+* Vérifier si une mise à jour du firmware est disponible 
+  ```(shell)
+  sudo apt update
+  sudo rpi-eeprom-update
+  ```
+* Si une mise à jour du firmware est disponible
+  ```(shell)
+  sudo rpi-eeprom-update -a
+  sudo reboot
+  ```
 
 ## Localisation
 
@@ -126,11 +153,10 @@ Surtout si vous activez l'accès SSH.
 
 * Les accès, via l'USB 3 de la Pi 4, à un disque sont bien plus rapide que les accès à la carte SD. : <https://www.jeffgeerling.com/blog/2019/raspberry-pi-microsd-card-performance-comparison-2019>.  
 L'écart est encore plus grand avec un SSD.  
-* Le firmware des Pi 2 et 3 permettent de booter directement sur un périphérique USB, sans avoir besoin de laisser une carte uSD.
-  * Mais il faut quand même une carte uSD pour booter une première fois et régler le boot sur USB  
-* Le firmware de la pi 4 permet, depuis septembre 2020, de booter directement sur USB.  
-  * Pour cela, il faut booter au moins une fois sur carte uSD. Puis configurer le boot sur USB avec raspi-config.
+* Le firmware des Pi 2, 3 et 4 permettent de booter directement sur un périphérique USB, sans avoir besoin de laisser une carte uSD.
+  * Mais il faut quand même une carte uSD pour booter une première fois et régler le boot sur USB avec raspi-config.
   * Cela résoud la question d'usure de la uSD.
+  * Il faut aussi copier une image OS sur le disque SSD. Avec Raspberry Pi Imager par exemple. Ou bien Etcher.
 * Implique éventuellement de désactiver le mode UAS,
   procédure dans <https://jamesachambers.com/raspberry-pi-4-usb-boot-config-guide-for-ssd-flash-drives/>
   * J'ai dû désactiver l'UAS pour accèder de façon fiable à mon SSD sur ma Pi4. Les performances baissent, mais j'ai quand même 170 Mo/s en lecture et écriture, et 4450 IOPS en lecture et 6210 IOPS en écriture. Trés supérieur à ce que l'on peut obtenir avec n'importe quelle carte SD sur Pi 4.
