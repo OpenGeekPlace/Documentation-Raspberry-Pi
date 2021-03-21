@@ -5,7 +5,7 @@
 * Priviligier une carte avec le label A1  
 Le label A1 garanti la performance en I/O par seconde  
 Cette performance en I/O a plus d'influence sur les performances de la Pi que le débit séquentiel.  
-Il y a d'énormes différences entre cartes sur les débits en écriture de petits fichiers (1Ko ou 4Ko). On parle là d'un facteur > 100.
+Il y a d'énormes différences entre cartes sur les débits en écriture de petits fichiers (1 Ko ou 4 Ko). On parle là d'un facteur > 100.
   * Cf <https://forum.armbian.com/topic/954-sd-card-performance/page/3/?tab=comments#comment-49811>
   * Autre benchmark, par Thomas kaiser : <https://github.com/ThomasKaiser/Knowledge/blob/master/articles/A1_and_A2_rated_SD_cards.md>
 * Il y a beaucup de contrefaçons avec les cartes uSD.
@@ -23,7 +23,7 @@ Il y a d'énormes différences entre cartes sur les débits en écriture de peti
   * <https://www.jeffgeerling.com/blog/2019/raspberry-pi-microsd-follow-sd-association-fools-me-twice>
   * Le label A2 implique un protocole de queuing que le noyau Linux, donc le Raspberry Pi ne supporte pas encore. Donc les cartes A2 sont utilisées dans un mode dégradé sur les Pi.
   * De futures évolutions du noyau Linux pourraient supporter pleinement les cartes A2. A suivre.
-* A noter que les débits séquentiels, sur gros fichiers, sont environ 2x meilleurs avec la Pi 4 par rapport aux modèles précédents. Mais les débits d'accès aléatoire, sur petits fichiers, sont à peine meilleurs que les modèles précédents.
+* À noter que les débits séquentiels, sur gros fichiers, sont environ 2x meilleurs avec la Pi 4 par rapport aux modèles précédents. Mais les débits d'accès aléatoire, sur petits fichiers, sont à peine meilleurs que les modèles précédents.
   * <https://www.pidramble.com/wiki/benchmarks/microsd-cards>
 
 ## Flasher la carte SD
@@ -36,7 +36,7 @@ A noter que vous trouverez souvent des références à Raspbian, qui est l'ancie
 
 * Uniquement si besoin d'accéder à distance
 * Pour une utilisation headless, à faire avant le premier démarrage, depuis le PC où l'on flash la carte uSD.
-* A la racine de la partition boot, créer un fichier nommé ssh.  
+* À la racine de la partition boot, créer un fichier nommé ssh.  
 Le contenu n'a pas d'importance.
 
 ## Activation du Wifi
@@ -48,7 +48,7 @@ Le contenu n'a pas d'importance.
 * Nécessite de connecter, au moins temporairement, un clavier et un écran
 * Ou bien de se connecter temporairement via Ethernet
   * On peut brancher temporairement un adaptateur USB-Ethernet à une Pi Zero pour cette étape
-  * Dans se cas l'accès se fera via SSH
+  * Dans ce cas l'accès se fera via SSH
 
 ### Via wpa_supplicant.conf
 
@@ -59,7 +59,7 @@ Le contenu n'a pas d'importance.
     * Dans le répertoire `/etc/wpa_supplicant` de la partition rootfs qui n'est pas visible depuis un PC Windows
     * Evitez de le placer dans ces 2 emplacements à la fois.
     Cela serait une source de confusion.
-* Ajoutez y l'identifiant et le mot de passe de votre réseau Wifi.
+* Ajoutez-y l'identifiant et le mot de passe de votre réseau Wifi.
 * Exemple :
 
     ```(shell)
@@ -114,6 +114,9 @@ Surtout si vous activez l'accès SSH.
 ## Mise à jour du firmware
 
 * Particulièrement important pour la Pi4 : <https://jamesachambers.com/raspberry-pi-4-bootloader-firmware-updating-recovery-guide/>
+* Pour la Pi 4, un firmware est disponible, depuis le 3 septembre 2020, qui permet de booter directement sur un disque USB sans même qu'une carte uSD soit présente.
+* <https://www.raspberrypi.org/documentation/hardware/raspberrypi/booteeprom.md>
+
 
 ## Localisation
 
@@ -125,14 +128,12 @@ Surtout si vous activez l'accès SSH.
 L'écart est encore plus grand avec un SSD.  
 * Le firmware des Pi 2 et 3 permettent de booter directement sur un périphérique USB, sans avoir besoin de laisser une carte uSD.
   * Mais il faut quand même une carte uSD pour booter une première fois et régler le boot sur USB  
-* Le firmware de la pi 4 ne permet, pas encore (avril 2020), de booter directement sur USB.  
-  * Mais on peut booter sur USB, puis utiliser un filesystem sur USB.
-  * Dans ce cas il n'y a plus d'usure de la uSD puisqu'on ne s'en sert que trés temporairement durant le boot.
-  * Procédure : <https://jamesachambers.com/raspberry-pi-4-usb-boot-config-guide-for-ssd-flash-drives/>
-  * Il existe aussi un script qui automatise cet procédure. Vous pouvez retrouver ce scipt dans le forum raspberrypi.org
+* Le firmware de la pi 4 permet, depuis septembre 2020, de booter directement sur USB.  
+  * Pour cela, il faut booter au moins une fois sur carte uSD. Puis configurer le boot sur USB avec raspi-config.
+  * Cela résoud la question d'usure de la uSD.
 * Implique éventuellement de désactiver le mode UAS,
   procédure dans <https://jamesachambers.com/raspberry-pi-4-usb-boot-config-guide-for-ssd-flash-drives/>
-  * J'ai du désactiver l'UAS pour accèder de façon fiable à mon SSD sur ma Pi4. Les performances baissent, mais j'ai quand même 170 Mo/s en lecture et écriture, et 4450 IOPS en lecture et 6210 IOPS en écriture. Trés supérieur à ce que l'on peut obtenir avec n'importe quelle carte SD sur Pi 4.
+  * J'ai dû désactiver l'UAS pour accèder de façon fiable à mon SSD sur ma Pi4. Les performances baissent, mais j'ai quand même 170 Mo/s en lecture et écriture, et 4450 IOPS en lecture et 6210 IOPS en écriture. Trés supérieur à ce que l'on peut obtenir avec n'importe quelle carte SD sur Pi 4.
 
 ## Limiter l'usure de la carte SD
 
