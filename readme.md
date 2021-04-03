@@ -38,8 +38,8 @@ Il y a d'énormes différences entre cartes sur les débits en écriture de peti
   * Autorisation du ssh
   * Tout ceci évite pas mal de manipulations décrites ci-dessous
   * Malheureusement, à l'usage, sous Windows 10 avec la V1.6, j'ai eu beaucoup d'échecs d'écriture de ces réglages sur la uSD ou le disque USB
-  * Espérons que ces soucis seront résolus dans une version ultérieure
-
+  * Ces soucis sont censés être corrigés dans la v1.6.1 sortie peu de temps après la V1.6
+  
 ## Activation du ssh
 
 * Uniquement si besoin d'accéder à distance
